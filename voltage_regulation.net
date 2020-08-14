@@ -1,0 +1,23 @@
+* C:\Users\phili\Documents\3rd year\Edesign_344\voltage_regulation.asc
+L1 5V_switch_regulator N004 47µ
+D1 0 N004 1N5822
+R1 N003 N002 1k
+R2 5V_switch_regulator N003 17.5k
+V1 N001 0 SINE(9 0 50k)
+XU1 N001 0 5V_linear_regulator LM7805
+C1 5V_linear_regulator 0 10µ
+C2 N001 0 10µ
+V2 N002 0 SINE(9 0 50k)
+XU2 N003 0 N002 0 N004 0 LM2595_ADJ_TRANS
+.model D D
+.lib C:\Users\phili\Documents\LTspiceXVII\lib\cmp\standard.dio
+.include TL081.lib
+.include LM2595_ADJ_TRANS.LIB
+.include TLC2272.LIB
+.include LM78XX_RS.lib
+.include diode.lib
+.tran 0 2m 0 1m
+.lib C:\Users\phili\Documents\3rd year\Edesign_344\LM78XX_RS.lib
+.lib C:\Users\phili\Documents\3rd year\Edesign_344\LM2595_ADJ_TRANS.LIB
+.backanno
+.end
