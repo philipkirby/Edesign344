@@ -1,0 +1,45 @@
+* C:\Users\phili\Documents\3rd_year\Edesign_344\Assignment3\E344_A3_heart.asc
+V1 Vheartsensor 0 PWL file=HeartSensorPWL.csv
+V4 N001 0 9
+R_Sense 9V N001 0.010
+XU1 9V 0 5V LM7805
+C1 9V 0 0.33µ
+C2 5V 0 0.1µ
+XU6 BPF_out N003 5V 0 1st_out TL081
+R1 1st_out N003 50k
+XU7 2nd_out N005 5V 0 Vheartpulsesout TLC2272
+R2 P001 N005 100
+R3 Vheartpulsesout N005 50k
+R4 5V P001 5k
+R5 P001 0 4.301k
+R6 N002 N004 1.001k
+R7 2nd_out N004 10k
+R8 5V N002 5k
+R9 N002 0 4.5k
+C3 0 BPF_out 100µ
+C4 2nd_out 0 1.701m
+C5 BPF_out P002 200µ
+R10 BPF_out 0 1k
+R11 P002 Vheartsensor 500
+R12 0 N003 300
+C6 1st_out 0 2.5m
+R13 5V N006 50
+XU8 1st_out N004 N006 0 2nd_out TL081
+.tran 0 {transtop} 0 {timestep}
+.include A3heartcfg.txt
+* Don't change these -- used for auto-assessments.\nYou may modify input files while developing.\nFor submission: \n  * Use only 9V supply \n  * Connect "Vheartsensor" to your \n               conditioning circuit's input\n  * Connect "Vheartpulsesout" to your output signal.\n  * Only one label name per net.
+* Config file:
+* Analysis setup:
+* Battery
+* Sensor-\nemulating \nstimulus
+* =============================\nPD Kirby,  21739064\nDC = 1.9 V\nHeart rate pk = 155.5mV\n=============================
+* ==========================================================================================\nHeart signal conditioning circuit (only copy and paste the given op-amps, or use those given in the working directory only)\n==========================================================================================
+* =============================\nVoltage regulation (complete this)\n=============================
+.incl TLC2272.LIB
+.incl TL081.LIB
+.incl LM78XX_RS.lib
+* Connect to your conditioning circuit's output
+* =============================\nIncludes (don't fiddle with this!!)\n=============================
+.lib LM78XX_RS.lib
+.backanno
+.end

@@ -1,0 +1,40 @@
+* C:\Users\phili\Documents\3rd_year\Edesign_344\Assignment3\E344_A3_temp.asc
+V1 Vtempsensor 0 PWL file=TempSensorPWL.csv
+V4 N003 0 9
+R_Sense 9V N003 0.010
+XU1 9V 0 5V LM7805
+R1 N006 Vtempsensor 1k
+XU5 N007 N005 5V 0 TL081_Out TL081
+R2 N001 N005 4k
+R3 TL081_Out N005 60k
+R4 5V N006 1.15k
+R5 N006 0 2k
+R6 5V N001 3k
+R7 N001 0 3k
+XU6 TL081_Out N004 5V 0 Vtempoutadc TLC2272
+R8 N002 N004 5k
+R9 Vtempoutadc N004 17k
+R10 5V N002 3k
+R11 N002 0 3.2k
+C3 N007 0 64µ
+R12 N007 N006 200
+C1 5V 0 0.1µ
+C4 9V 0 0.33µ
+.tran 0 {transtop} 0 {timestep}
+.include A3tempcfg.txt
+* Don't change these -- used for auto-assessments.\nYou may modify input files while developing.\nFor submission: \n  * Use only 9V supply \n  * Connect "Vtempsensor" to your \n               conditioning circuit's input\n  * Connect "VtempoutADC" to your output signal.\n  * Only one label name per net.
+* Config file:
+* Analysis setup:
+* Battery
+* Sensor-\nemulating \nstimulus
+* =============================\nPD Kirby 21739064\nV(0degV) = 660 mV\ndeltaV/degV = 25 mV\n=============================
+* ==========================================================================================\nTemperature conditioning circuit (only copy and paste the given op-amps, or use those given in the working directory only)\n==========================================================================================
+* =============================\nVoltage regulation (complete this)\n=============================
+.incl TLC2272.LIB
+.incl TL081.LIB
+.incl LM78XX_RS.lib
+* Connect to your conditioning circuit's output
+* =============================\nIncludes (don't fiddle with this!!)\n=============================
+.lib LM78XX_RS.lib
+.backanno
+.end

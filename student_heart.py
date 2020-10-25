@@ -29,12 +29,10 @@ def calibrate(time, amplitude):
     while(k < len(risingedge)):
         diffrise.append(risingedge[k]-risingedge[k-1])
         k = k + 1
-
-    print(risingedge)
     bpm = (1/mean(diffrise))*60
 
 
 
     ######################################
 
-    return bpm
+    return round(bpm+0.5)
